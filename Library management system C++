@@ -1,0 +1,68 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+class Book {
+public:
+    std::string title;
+    std::string author;
+    bool isAvailable;
+
+    Book(std::string t, std::string a) : title(t), author(a), isAvailable(true) {}
+};
+
+class Member {
+public:
+    std::string name;
+    int memberId;
+
+    Member(std::string n, int id) : name(n), memberId(id) {}
+};
+
+class Library {
+private:
+    std::vector<Book> books;
+    std::vector<Member> members;
+
+public:
+    void addBook(const Book& book) {
+        books.push_back(book);
+    }
+
+    void addMember(const Member& member) {
+        members.push_back(member);
+    }
+
+    void displayBooks() {
+        std::cout << "Books in the library:\n";
+        for (const auto& book : books) {
+            std::cout << "Title: " << book.title << ", Author: " << book.author 
+                      << ", Available: " << (book.isAvailable ? "Yes" : "No") << "\n";
+        }
+    }
+
+    void displayMembers() {
+        std::cout << "Library Members:\n";
+        for (const auto& member : members) {
+            std::cout << "Name: " << member.name << ", Member ID: " << member.memberId << "\n";
+        }
+    }
+};
+
+int main() {
+    Library library;
+
+    // Adding some books
+    library.addBook(Book("1984", "George Orwell"));
+    library.addBook(Book("To Kill a Mockingbird", "Harper Lee"));
+
+    // Adding some members
+    library.addMember(Member("Alice", 1));
+    library.addMember(Member("Bob", 2));
+
+    // Displaying books and members
+    library.displayBooks();
+    library.displayMembers();
+
+    return 0;
+}
