@@ -1,0 +1,39 @@
+import random
+
+def get_word_list():
+    return {
+        "python": "A high-level programming language.",
+        "vocabulary": "The body of words used in a particular language.",
+        "guess": "To estimate or conclude something without sufficient information.",
+        "spelling": "The process or activity of writing or naming the letters of a word.",
+        "interactive": "Involving communication between a person and a computer."
+    }
+
+def play_game():
+    words = get_word_list()
+    score = 0
+    attempts = 3
+
+    print("Welcome to the Vocabulary and Spelling Game!")
+    print("You have 3 attempts to guess the word based on the hint provided.\n")
+
+    for word, hint in words.items():
+        print(f"Hint: {hint}")
+        for attempt in range(attempts):
+            guess = input("Your guess: ").strip().lower()
+            if guess == word:
+                print("Correct! You've earned a point.")
+                score += 1
+                break
+            else:
+                print("Incorrect guess.")
+                if attempt < attempts - 1:
+                    print("Try again.")
+                else:
+                    print(f"The correct word was: {word}")
+        print()  # New line for better readability
+
+    print(f"Game Over! Your total score is: {score}/{len(words)}")
+
+if __name__ == "__main__":
+    play_game()
