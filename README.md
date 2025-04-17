@@ -1,2 +1,3 @@
-# python-project
-i made this project using python full stack 
+# project
+i made this project 
+
